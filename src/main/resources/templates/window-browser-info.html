@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Browser Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .info-box {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Browser Information</h1>
+<div id="nav" class="info-box"></div>
+<div id="scr" class="info-box"></div>
+<div id="loc" class="info-box"></div>
+<div id="win" class="info-box"></div>
+
+<script>
+    function displayNavigatorInfo() {
+        const navInfo = {
+            appName: window.navigator.appName,
+            appCodeName: window.navigator.appCodeName,
+            appVersion: window.navigator.appVersion,
+            userAgent: window.navigator.userAgent,
+            platform: window.navigator.platform,
+            language: window.navigator.language,
+            onLine: window.navigator.onLine
+        };
+        document.getElementById("nav").innerHTML = "<h2>Navigator Information</h2><pre>" + JSON.stringify(navInfo, null, 2) + "</pre>";
+    }
+
+    function displayScreenInfo() {
+        const screenInfo = {
+            width: window.screen.width,
+            height: window.screen.height,
+            availWidth: window.screen.availWidth,
+            availHeight: window.screen.availHeight,
+            colorDepth: window.screen.colorDepth,
+            pixelDepth: window.screen.pixelDepth
+        };
+        document.getElementById("scr").innerHTML = "<h2>Screen Information</h2><pre>" + JSON.stringify(screenInfo, null, 2) + "</pre>";
+    }
+
+    function displayLocationInfo() {
+        const locationInfo = {
+            url: window.location.href,
+            host: window.location.host,
+            path: window.location.pathname
+        };
+        document.getElementById("loc").innerHTML = "<h2>History Information</h2><pre>" + JSON.stringify(locationInfo, null, 2) + "</pre>";
+    }
+
+    function displayWindowInfo() {
+
+        const windowInfo = {
+            outerWidth: window.outerWidth,
+            outerHeight: window.outerHeight,
+            innerWidth: window.innerWidth,
+            innerHeight: window.innerHeight
+
+        };
+        document.getElementById("win").innerHTML = "<h2>Window Information</h2><pre>" + JSON.stringify(windowInfo, null, 2) + "</pre>";
+    }
+
+
+    // Call the functions to display the information
+    displayNavigatorInfo();
+    displayScreenInfo();
+    displayLocationInfo();
+    displayWindowInfo();
+</script>
+</body>
+</html>

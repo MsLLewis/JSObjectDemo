@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 300px;
+      margin-top: 10%;
+    }
+    input, select {
+      width: 200px;
+    }
+
+    .data-display {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .data-display p {
+      margin: 5px 0;
+    }
+
+  </style>
+
+</head>
+<body>
+<form action="" name="myForm" method="POST"  onsubmit="displayData(event)"  >
+
+  <input type="text" name="Name"  placeholder="Enter a username" pattern="^[a-zA-Z]+"
+         title="Please start username with a letter from a-z "
+         required/>  <!-- 1. user must enter data-->
+
+  <input type="text" name="Email" placeholder="Email with regEx"
+         title="please start with letter and follow name@mail.com" pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$" required/>
+
+  <input type="email" name="EmailTwo"  placeholder="Email with type email"
+         required/>
+
+  <input type="tel" name="Zip" min="5" maxlength="5" id="ZipID" placeholder="Enter Zip Code" pattern="\d{5}" title="Five digits only" required/>
+
+  <input type="date" name="Dob" id="date" value="2024-12-31"
+         min="1910-01-01" max="2024-12-31" placeholder="Date of Birth" required/>
+
+
+  <select name="Country" id="CountryId" required>
+    <option value=""> [choose yours] | Select Country</option>
+    <option value="USA">USA</option>
+    <option value="UK">UK</option>
+    <option value="UAE">UAE</option>
+  </select>
+
+  <input type="password" name="password" id="password" placeholder="Password" required/>
+
+  <input type="submit" value="Submit" id="submitButton"/>
+</form>
+
+<div class="data-display" id="dataDisplay">
+  <h2>Entered Data</h2>
+  <p id="displayName"></p>
+  <p id="displayEmail"></p>
+  <p id="displayEmailTwo"></p>
+  <p id="displayZip"></p>
+  <p id="displayDOB"></p>
+  <p id="displayCountry"></p>
+</div>
+
+<script>
+  function displayData(event){
+    event.preventDefault();
+    const form = document.forms['myForm']
+    const  name = form['Name'].value;
+    const email = form['Email'].value;
+    const  emailTwo = form['EmailTwo'].value;
+    const zip = form['Zip'].value;
+    const dob = form['Dob'].value;
+    const country = form['Country'].value;
+
+    document.getElementById("displayName").textContent = "Name: " + name;
+    document.getElementById('displayEmail').textContent = 'Email (RegEx): ' + email;
+    document.getElementById('displayEmailTwo').textContent = 'Email (Type): ' + emailTwo;
+    document.getElementById('displayZip').textContent = 'Zip Code: ' + zip;
+    document.getElementById('displayDOB').textContent = 'Date of Birth: ' + dob;
+    document.getElementById('displayCountry').textContent = 'Country: ' + country;
+  }
+</script>
+</body>
+</html>
+
